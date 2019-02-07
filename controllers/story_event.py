@@ -1,6 +1,7 @@
 """Resource controller for Story events"""
 
 from flask_restful import reqparse, Resource
+from models.db_story_event import DbStoryEvent
 
 
 class StoryEvent(Resource):
@@ -17,14 +18,7 @@ class StoryEvent(Resource):
         #arg_parser = reqparse.RequestParser()
         #arg_parser.add_argument("format", type=str, default="json")
         #args = arg_parser.parse_args()
-        return {
-          "event_id": 1,
-          "story_content": "This is a story snippet, authors will write their pages here.",
-          "subsequent_events": {
-            #resolution now is based on character morality
-            "good": 2,
-            "bad": 3,
-            "death": 42,
-            "end": 666
-          }
-        }
+        event = DbStoryEvent.find(story_id, event_id)
+
+        
+        return event
