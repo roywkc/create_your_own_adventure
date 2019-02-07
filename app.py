@@ -19,8 +19,8 @@ def create_app():
 
 	API.add_resource(Stories, "/v1/stories")
 	API.add_resource(Story, "/v1/stories/<string:story_id>")
-	API.add_resource(StoryEvent, "/v1/stories/<string:story_id>/events/<string:event_id>")
 	API.add_resource(StoryCharacter, "/v1/stories/<string:story_id>/characters/<string:character_id>")
+	API.add_resource(StoryEvent, "/v1/stories/<string:story_id>/characters/<string:character_id>/events/<string:event_id>")
 
 	return APP
 

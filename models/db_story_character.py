@@ -7,7 +7,7 @@ class DbStoryCharacter():
 	# str story_content
 	# dict subsequent_events # good, bad, death, end
 
-	def find(character_id):
+	def find(story_id, character_id):
 		return {
 			'name': 'Morpheus',
 			'story_id': story_id,
@@ -19,12 +19,21 @@ class DbStoryCharacter():
 			}
 		}
 
-	def update(character_id, stats):
-		return {
+	def update(story_id, character_id, stat_modifiers):
+		character = {
 			'name': 'Morpheus',
 			'story_id': story_id,
-			'stats': stats
+			'stats': {
+				'morality': 50,
+				'strength': 10,
+				'intelligence': 5,
+				'agility': 3
+			}
 		}
+		for stat in stat_modifiers:
+			character['stats'][stat] = character['stats'][stat] + stat_modifiers[stat]
 
-	def create(char)
+		return character
+
+	def create(char):
 		return char
