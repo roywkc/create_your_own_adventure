@@ -1,6 +1,6 @@
 """Resource controller for Story events"""
 
-from flask_restful import reqparse, Resource
+from flask_restful import reqparse, Resource, request
 from models.db_story import DbStory
 
 class Story(Resource):
@@ -11,3 +11,9 @@ class Story(Resource):
         result = DbStory.find(story_id)
         return result
 
+    def put(self, story_id):
+        story = DbStory.find(story_id)
+
+        story['summary'] = request.form['summary']
+
+        return story
