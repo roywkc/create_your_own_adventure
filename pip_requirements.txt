@@ -1,2 +1,6 @@
 flask
 flask_restful
+black
+sqlalchemy
+psycopg2
+pytest
